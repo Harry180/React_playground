@@ -11,27 +11,40 @@
     <div id="react-container"></div>
 
     <script type="text/babel">
-
-        // import React, { Component } from 'react';
         
+        class Checkbox extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state ={
+                    checked: false
+                }
+                this.handleCheck = this.handleCheck.bind(this);
+            }
 
-        class Hello extends React.Component {
+            handleCheck() {
+                this.setState({
+                    checked: !this.state.checked
+                })
+            }
+
             render() {
-                
-                const Banner = () => <h1>Welcome {this.props.firstName}</h1>
+                let msg;
+                if(this.state.checked) {
+                    msg = "checked"
+                } else {
+                    msg = "not checked"
+                }
                 return (
                     <div>
-                        <Banner />
-                        <p>Learning react version: {this.props.version}.6.3</p>
+                        <input type="checkbox" onChange={this.handleCheck} />
+                        <p>This box is {msg}</p> 
                     </div>
-                );
+                )
             }
         }
 
-        const HelloStateless = ({firstName}) => <h1>Hello {firstName}</h1>
-
         ReactDOM.render(
-            <HelloStateless firstName="Harry" version={16}/>,
+            <Checkbox/>,
             document.getElementById('react-container')
         )
     </script>
