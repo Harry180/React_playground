@@ -18,18 +18,18 @@
         class Hello extends React.Component {
             render() {
                 
-                const Banner = () => <h1>Welcome Banner</h1>
+                const Banner = () => <h1>Welcome {this.props.firstName}</h1>
                 return (
                     <div>
-                        <h1>Hello</h1>
                         <Banner />
+                        <p>Learning react version: {this.props.version}.6.3</p>
                     </div>
                 );
             }
         }
 
         ReactDOM.render(
-            <Hello />,
+            <Hello firstName="Harry" version={16}/>,
             document.getElementById('react-container')
         )
     </script>
