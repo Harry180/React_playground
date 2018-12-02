@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./node_modules/babel-standalone//babel.min.js"></script>
+    <title>Start react</title>
+</head>
+<body>
+    <div id="react-container"></div>
+
+    <script type="text/babel">
+
+        // import React, { Component } from 'react';
+        
+
+        class Hello extends React.Component {
+            render() {
+                
+                const Banner = () => <h1>Welcome Banner</h1>
+                return (
+                    <div>
+                        <h1>Hello</h1>
+                        <Banner />
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Hello />,
+            document.getElementById('react-container')
+        )
+    </script>
+</body>
+</html>
