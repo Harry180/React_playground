@@ -28,7 +28,7 @@
             }
         }
 
-        const HelloStateless = (props) => <h1>Hello {props.firstName}</h1>
+        const HelloStateless = ({firstName}) => <h1>Hello {firstName}</h1>
 
         ReactDOM.render(
             <HelloStateless firstName="Harry" version={16}/>,
