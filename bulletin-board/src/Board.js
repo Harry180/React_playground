@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Note from './Note'
+import {FaPlusCircle} from 'react-icons/fa'
 
 class Board extends Component {
     constructor(props){
@@ -20,6 +21,24 @@ class Board extends Component {
         this.eachNote = this.eachNote.bind(this);
         this.update = this.update.bind(this);
         this.remove = this.remove.bind(this);
+        this.add = this.add.bind(this);
+
+        this.nextId = this.nextId.bind(this);
+    }
+    add (text) {
+        this.setState(prevState => ({
+            notes: [
+                ...prevState.notes,
+                {
+                    id: this.nextId(),
+                    note: text
+                }
+            ]
+        }))
+    }
+    nextId (){
+        this.uniqueId = this.uniqueId || this.state.notes.length;
+        return this.uniqueId++;
     }
     update( newText, i) {
         console.log('updating item at index', i, newText);
@@ -30,6 +49,7 @@ class Board extends Component {
         }));
     }
     remove(id) {
+        console.log("remove id", id);
         this.setState(prevState => ({
             notes: prevState.notes.filter(note => note.id !== id)
         }));
@@ -47,6 +67,9 @@ class Board extends Component {
         return (
             <div className="board">
                 {this.state.notes.map(this.eachNote)}
+                <button onClick={this.add.bind(null, 'New Note')} id="add">
+                    <FaPlusCircle />
+                </button>
             </div>
         )
     }
